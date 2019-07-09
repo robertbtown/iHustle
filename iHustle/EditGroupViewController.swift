@@ -9,7 +9,16 @@
 import UIKit
 
 class EditGroupViewController: UITableViewController {
-    var group: Group!
+    var group: Group
+
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+
+    init?(coder: NSCoder, group: Group) {
+        self.group = group
+        super.init(coder: coder)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
