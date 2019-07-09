@@ -45,7 +45,7 @@ class ViewController: UITableViewController {
             cell.detailTextLabel?.text = "No outstanding goals"
         } else {
             let goals = outstandingGoals.map { $0.name }
-            cell.detailTextLabel?.text = "Outstanding goals: \(goals.joined(separator: ", "))"
+            cell.detailTextLabel?.text = "Outstanding goals: \(ListFormatter.localizedString(byJoining: goals))"
         }
 
         return cell

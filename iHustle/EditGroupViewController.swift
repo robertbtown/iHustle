@@ -16,7 +16,7 @@ class EditGroupViewController: UITableViewController {
 
         title = group.name
 
-        let rename = UIBarButtonItem(image: UIImage(named: "edit"), style: .plain, target: self, action: #selector(renameGroup))
+        let rename = UIBarButtonItem(image: UIImage(systemName: "doc"), style: .plain, target: self, action: #selector(renameGroup))
         let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addGoal))
         navigationItem.rightBarButtonItems = [add, rename]
 
@@ -40,7 +40,9 @@ class EditGroupViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if group.goals.count > 0 {
-            return "Created: \(group.created)"
+            let formatter = RelativeDateTimeFormatter()
+            formatter.unitsStyle = .full
+            return "Created: \(formatter.localizedString(for: group.created, relativeTo: Date()))"
         } else {
             return "No goals in this group"
         }
